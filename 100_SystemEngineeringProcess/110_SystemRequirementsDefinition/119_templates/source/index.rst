@@ -6,9 +6,15 @@
 xxxxx システム要求仕様書
 ================================
 
-* Version:0.0.1
-* Update:|today|
-* Author: Saburo Takahashi
+.. list-table::
+
+  * - Version
+    - |release|
+  * - Last Update
+    - |today|
+  * - Author
+    - Saburo Takahashi
+
 
 変更履歴
 ---------------------------------
@@ -38,10 +44,6 @@ No.  日付         バージョン 改定内容                 変更者
    :glob:
 
    section/*
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
 
 ======= ============ =========== ===================== ======
