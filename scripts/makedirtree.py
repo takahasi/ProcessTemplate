@@ -12,14 +12,15 @@ import argparse
 import zipfile
 
 
-def make_directories(path):
+def make_directories(path='.'):
     """ Generate template directories under target path"""
 
     top_process = [
         'SystemEngineering',
         'SafetyEngineering',
         'SoftwareEngineering',
-        'Support'
+        'Support',
+        'Others'
     ]
     sub_process = [
         # SystemEngineering
@@ -56,6 +57,10 @@ def make_directories(path):
             'JointReview',
             'SubContructorManagement',
             'PreparationDevelopEnvironment'
+        ],
+        # Others
+        [
+            'dummy'
         ]
     ]
 
@@ -76,21 +81,24 @@ def fild_all_files(path):
 
 def main(args):
     """ Main routine """
-    parser = argparse.ArgumentParser(description='This is command for xxx')
-    parser.add_argument('path', help='target path')
-    parser.add_argument('-f', '--foo', help='foo help')
-    parser.add_argument('--version', action='version', version='%(prog)s 1.0')
+    parser = argparse.ArgumentParser(description='This is command for generating development process template directories')
+    parser.add_argument('path', help='target top path of generated directories')
+    parser.add_argument('-v', '--version', action='version', version='%(prog)s 1.0')
     args = parser.parse_args()
 
-    make_directories(args.path)
+    if args.path:
+        make_directories(args.path)
 
-    z = zipfile.ZipFile('process_template.zip', 'w', zipfile.ZIP_DEFLATED)
+        z = zipfile.ZipFile('process_template.zip', 'w', zipfile.ZIP_DEFLATED)
 
-    for f in fild_all_files(args.path):
-        print f
-        z.write(f)
+        for f in fild_all_files(args.path):
+            print f
+            z.write(f)
 
-    z.close()
+        z.close()
+
+    else:
+        print("Argument error. Please input path!")
 
 
 if __name__ == '__main__':
